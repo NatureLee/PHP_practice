@@ -7,9 +7,17 @@
   <body>
     <h1><a href="index.php">WEB</a></h1>
     <ol>
-      <li><a href = "index.php?id=HTML">HTML</a></li>
-      <li><a href = "index.php?id=CSS">CSS</a></li>
-      <li><a href = "index.php?id=JavaScript">JabaScript</a></li>
+      <?php
+       //list에 담아놓고 그걸 반복문으로 플어서 보여줌
+         $list = scandir('./data');
+         $a = 0;
+         while ($a < count($list)) {
+           if ($list[$a] != '.' && $list[$a] != '..') {
+             echo "<li><a href = \"index.php?id=$list[$a]\">$list[$a]</a></li>\n";
+           }
+           $a= $a + 1;
+         }
+        ?>
     </ol>
     <h2>
       <?php
